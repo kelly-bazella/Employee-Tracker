@@ -1,0 +1,23 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "track employee information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelly-bazella/Employee-Tracker.git"
+  },
+  "author": "Kelly Bazella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kelly-bazella/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/kelly-bazella/Employee-Tracker#readme",
+  "dependencies": {
+    "inquirer": "^7.0.6",
+    "mysql": "^2.18.1"
+  }
+}
