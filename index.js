@@ -1,5 +1,9 @@
 var inquirer = require("inquirer");
-var mysql = require("mysql")
+var express = require("express");
+var mysql = require("mysql");
+var app = express();
+var PORT = 7050;
+// port and listener NOT 3306
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -13,8 +17,20 @@ connection.connect(function(err){
     if(err) throw err;
     console.log("connection is id: "+ connection.threadId);
     start();
-})
+});
 
+
+function addDepartment(){
+    var sql = "INSERT into department (name) VALUES (?)"
+}
+
+function addEmployee(){
+    var sql = "INSERT into employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)"
+}
+
+function addRole(){
+    var sql = "INSERT into role (title, salary, department_id) VALUES (?.?,?)"
+}
 
 function viewDepartments(){
     var sql = "SELECT * FROM department"
@@ -47,7 +63,7 @@ var starterQuestion =
     [{
         type: "list",
         message: "What would you like to do?",
-        name: "initial-questions",
+        name: "initialQuestions",
         choices: [
             "Add department",
             new inquirer.Separator(),
@@ -66,15 +82,28 @@ var starterQuestion =
         ]
     }];
 
-inquirer.prompt(starterQuestion).then(data => {
+function start () {inquirer.prompt(starterQuestion).then(data => {
     console.log(data)
-    // if (answer.initial-questions == "View department"){
-    //     viewDepartments();
-    // } 
-    // else if(answer.initial-questions == "View employees"){
-    //     viewEmployees();
-    // }
-    // else if(answer.initial-questions == "View roles"){
-    //     viewRoles();
-    // }
+    if (data.initialQuestions == "View departments"){
+        viewDepartments();
+    } 
+    else if(data.initialQuestions == "View employees"){
+        viewEmployees();
+    }
+    else if(data.initialQuestions == "View roles"){
+        viewRoles();
+    }
+    else if(data.initialQuestions == "Add department"){
+        addDepartment();
+    }
+    else if(data.initialQuestions == "Add employee"){
+        addEmployee();
+    }
+    else if(data.initialQuestions == "Add role"){
+        addRole();
+    }
 });
+}
+app.listen(PORT, function() {
+    console.log("Server listening on: http://localhost:" + PORT);
+  });
