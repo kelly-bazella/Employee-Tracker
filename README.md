@@ -13,6 +13,9 @@ So that I can organize and plan my business
 ## Purpose
 The purpose of this application is for managers to easily access information about their company. They will be able to view their departments, employees, and roles easily. 
 
+## Language Used
+- JavaScript
+
 ## GIF
 ![](view.gif)
 ![](add.gif)
